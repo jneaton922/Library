@@ -10,9 +10,35 @@
 </head>
 <body>
     <div class="container">
-        <button id="newBook">Add a book</button>
+        <button id="newBook" onclick="newBookForm()">Add a book</button>
         <div class="library-container"> </div>
+
+        <div class="form-popup" id="newBookForm">
+            <form class="form-container" onsubmit="return addBookFromFormData()">
+              <h1>Add Book</h1>
+          
+              <label for="title"><b>Title</b></label>
+              <input type="text" id='title' placeholder="Enter Title" name="title" required>
+          
+              <label for="author"><b>By</b></label>
+              <input type="author" id='author' placeholder="Enter Author" name="author" required>
+
+              <label for="pages"><b>Page count</b></label>
+              <input type="pages" id='pages' placeholder="Enter page count" name="pages" >
+
+              <label for="read">Have you read it?</label>
+              <input type="radio" id="read" name="read" value=true>
+              <label for="yes">Yes</label>
+              <input type="radio" id="read" name="read" value=false>
+              <label for="no">No</label>
+          
+              <button type="submit" class="btn" >Add</button>
+              <button type="button" class="btn cancel" onclick="closeBookForm()">Cancel</button>
+            </form>
+          </div>
     </div>
+
+
 
 
 
