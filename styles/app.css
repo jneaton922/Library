@@ -1,0 +1,22 @@
+body
+{
+    background-color: #495057;
+    background-image: url("../buff-head.svg");
+    background-repeat: repeat-y;
+    font-family: 'Luxurious Roman', serif;
+}
+
+#nav
+{
+    background-color: #162525cc;
+}
+
+.read
+{
+    background-color: #117577 !important;
+}
+
+h2{
+    font-size: 1.5rem;
+    color: #eee;
+}
