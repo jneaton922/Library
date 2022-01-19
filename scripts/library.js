@@ -40,15 +40,6 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-    const toggleRead = function () {
-        if (this.read) {
-            this.read = false;
-        }
-        else {
-            this.read = true;
-        }
-    }
 }
 
 function addBook(title, author, pages, read) {
@@ -60,6 +51,13 @@ function removeBook(e) {
     console.log(e.target.id);
     let targetBookIndex = e.target.id.slice(3);
     library.splice(targetBookIndex, 1);
+    bookDisplayLoop(document.getElementById('libraryContainer'));
+}
+
+function toggleEvent(e) {
+    console.log(e.target.id);
+    let targetBookIndex = e.target.id.slice(12);
+    library[targetBookIndex].read = !library[targetBookIndex].read;
     bookDisplayLoop(document.getElementById('libraryContainer'));
 }
 
@@ -81,7 +79,7 @@ function bookDisplayLoop(library_container) {
         }
         let thisBook = document.createElement('div');
         thisBook.setAttribute('data-attribute', `book${i}`);
-        let classStr = 'border border-dark rounded-lg bg-secondary text-light col-md-5 col-lg-3 p-5 mx-1 my-1';
+        let classStr = 'book-card border border-dark rounded-lg bg-secondary text-light col-md-5 col-lg-3 p-5 mx-1 my-1';
         let checked = 'checked';
         if (library[i].read) { classStr = classStr.concat(' read'); }
         else {
@@ -101,6 +99,8 @@ function bookDisplayLoop(library_container) {
         library_container.appendChild(thisBook);
         let remove = document.getElementById(`btn${i}`);
         remove.addEventListener('click', removeBook);
+        let toggle = document.getElementById(`customSwitch${i}`);
+        toggle.addEventListener('change', toggleEvent);
     }
 }
 
