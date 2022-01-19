@@ -4,28 +4,6 @@ const form = document.getElementById("formContainer");
 const cancel = document.getElementById("formRst");
 
 
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-addBook("Red Rising", "Pierce Brown", 382, true);
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-addBook("Red Rising", "Pierce Brown", 382, false);
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-addBook("Red Rising", "Pierce Brown", 382, true);
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, true);
-addBook("Red Rising", "Pierce Brown", 382, true);
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-addBook("Red Rising", "Pierce Brown", 382, false);
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, true);
-addBook("Red Rising", "Pierce Brown", 382, true);
-addBook("Ender's Game", "Orson Scott Card", 324, false);
-addBook("Hitchiker's Guide", "Douglas Adams", 832, true);
-addBook("Red Rising", "Pierce Brown", 382, false);
-
 let library_container = document.getElementById('libraryContainer');
 bookDisplayLoop(library_container);
 
