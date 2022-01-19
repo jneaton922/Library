@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library App</title>
+  <title>Buffalibrary</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/app.css">
@@ -27,7 +27,13 @@
           d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
       </svg> Buffalibrary</span>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <button id="addBook" class=" btn btn-dark nav-link">Add Book</button>
+      </li>
+    </ul>
+
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,7 +44,7 @@
           <button id="addBook" class=" btn btn-dark nav-link">Add Book</button>
         </li>
       </ul>
-    </div>
+    </div> -->
   </nav>
 
   <div class="container text-center">
@@ -46,25 +52,20 @@
   </div>
   <div class="container-fluid">
     <div id="formContainer" class="container d-none">
-      <form>
+      <form onsubmit="return false">
         <div class="form-group">
           <label for="titleInput">Title</label>
-          <input type="text" class="form-control bg-dark" id="titleInput">
+          <input type="text" class="form-control text-light bg-dark" id="titleInput">
         </div>
-        <div class="form-group row justify-content-center">
-          <div class="col-lg-5">
-            <label for="authorInputFirst" class="col-form-label">Author First name</label>
-            <input type="text" class="form-control bg-dark" id="authorInputFirst">
-          </div>
-          <div class="col-lg-5">
-            <label for="authorInputLast" class="col-form-label">Author Last name</label>
-            <input type="text" class="form-control bg-dark" id="authorInputLast">
-          </div>
+        <div class="form-group">
+          <label for="authorInput" class="col-form-label">Author</label>
+          <input type="text" class="form-control text-light bg-dark" id="authorInput">
         </div>
 
         <div class="form-group">
           <label for="pageInput">Page Count</label>
-          <input type="number" id="pageInput" class="form-control bg-dark" name="tentacles" min="1" max="10000">
+          <input type="number" id="pageInput" class="form-control text-light bg-dark" name="tentacles" min="1"
+            max="10000">
         </div>
         <div class="form-group form-check">
           <div class="custom-control custom-switch">

@@ -1,33 +1,33 @@
-let library = [];
+const library = [];
+const addBtn = document.getElementById("addBook");
+const form = document.getElementById("formContainer");
+const cancel = document.getElementById("formRst");
+
+
 addBook("Ender's Game", "Orson Scott Card", 324, false);
 addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
 addBook("Red Rising", "Pierce Brown", 382, true);
-// addBook("Ender's Game", "Orson Scott Card", 324, false);
-// addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-// addBook("Red Rising", "Pierce Brown", 382, true);
-// addBook("Ender's Game", "Orson Scott Card", 324, false);
-// addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-// addBook("Red Rising", "Pierce Brown", 382, true);
-// addBook("Ender's Game", "Orson Scott Card", 324, false);
-// addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-// addBook("Red Rising", "Pierce Brown", 382, true);
-// addBook("Ender's Game", "Orson Scott Card", 324, false);
-// addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-// addBook("Red Rising", "Pierce Brown", 382, true);
-// addBook("Ender's Game", "Orson Scott Card", 324, false);
-// addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-// addBook("Red Rising", "Pierce Brown", 382, true);
-// addBook("Ender's Game", "Orson Scott Card", 324, false);
-// addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
-// addBook("Red Rising", "Pierce Brown", 382, true);
-
+addBook("Ender's Game", "Orson Scott Card", 324, false);
+addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
+addBook("Red Rising", "Pierce Brown", 382, false);
+addBook("Ender's Game", "Orson Scott Card", 324, false);
+addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
+addBook("Red Rising", "Pierce Brown", 382, true);
+addBook("Ender's Game", "Orson Scott Card", 324, false);
+addBook("Hitchiker's Guide", "Douglas Adams", 832, true);
+addBook("Red Rising", "Pierce Brown", 382, true);
+addBook("Ender's Game", "Orson Scott Card", 324, false);
+addBook("Hitchiker's Guide", "Douglas Adams", 832, false);
+addBook("Red Rising", "Pierce Brown", 382, false);
+addBook("Ender's Game", "Orson Scott Card", 324, false);
+addBook("Hitchiker's Guide", "Douglas Adams", 832, true);
+addBook("Red Rising", "Pierce Brown", 382, true);
+addBook("Ender's Game", "Orson Scott Card", 324, false);
+addBook("Hitchiker's Guide", "Douglas Adams", 832, true);
+addBook("Red Rising", "Pierce Brown", 382, false);
 
 let library_container = document.getElementById('libraryContainer');
 bookDisplayLoop(library_container);
-
-let addBtn = document.getElementById("addBook");
-let form = document.getElementById("formContainer");
-let cancel = document.getElementById("formRst");
 
 const showForm = function () {
     console.log("pop up the form here");
@@ -46,8 +46,14 @@ cancel.addEventListener('click', hideForm);
 
 const submitAdd = function () {
     console.log("submitted");
-    console.log(form.elements);
     hideForm();
+    let title = document.getElementById("titleInput").value;
+    let author = document.getElementById("authorInput").value;
+    let pages = document.getElementById("pageInput").value;
+    let readCheck = document.getElementById("readCheck").value;
+
+    addBook(title, author, pages, readCheck);
+    bookDisplayLoop(document.getElementById("libraryContainer"));
 }
 form.addEventListener('submit', submitAdd);
 
@@ -56,32 +62,27 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    let = read_string = '';
-    if (this.read) {
-        read_string = "already read it.";
-    }
-    else {
-        read_string = "not read yet";
-    }
-    this.read_string = read_string;
 
     const toggleRead = function () {
         if (this.read) {
             this.read = false;
-            read_string = "not read yet";
         }
         else {
             this.read = true;
-            read_string = "already read it";
         }
     }
 }
 
 function addBook(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
-    console.log(newBook);
     library.push(newBook);
-    console.log(library.length);
+}
+
+function removeBook(e) {
+    console.log(e.target.id);
+    let targetBookIndex = e.target.id.slice(3);
+    library.splice(targetBookIndex, 1);
+    bookDisplayLoop(document.getElementById('libraryContainer'));
 }
 
 function bookDisplayLoop(library_container) {
@@ -90,7 +91,7 @@ function bookDisplayLoop(library_container) {
 
     if (!library.length) {
         library_container.innerHTML = `
-        <h1>You haven't added any books yet... get reading!</h1>`;
+        <h1 class='text-light'>You haven't added any books yet... get reading!</h1>`;
         return
     }
     for (let i = 0; i < library.length; i++) {
@@ -100,8 +101,8 @@ function bookDisplayLoop(library_container) {
         else {
             toggle_str = "Unread";
         }
-        console.log('adding a book');
         let thisBook = document.createElement('div');
+        thisBook.setAttribute('data-attribute', `book${i}`);
         let classStr = 'border border-dark rounded-lg bg-secondary text-light col-md-5 col-lg-3 p-5 mx-1 my-1';
         let checked = 'checked';
         if (library[i].read) { classStr = classStr.concat(' read'); }
@@ -120,6 +121,8 @@ function bookDisplayLoop(library_container) {
         <button id='btn${i}' class='btn btn-dark'>Remove</button>
         `
         library_container.appendChild(thisBook);
+        let remove = document.getElementById(`btn${i}`);
+        remove.addEventListener('click', removeBook);
     }
 }
 
